@@ -87,7 +87,8 @@ app.post('/send', function (req, res) {
   request.get({
     url: networkIp
   }, function (err, response, body) {
-    var addresses = JSON.parse(response.body);
+    console.log(response.body);
+    var addresses = response.body;
 
     console.log(addresses);
     addresses.forEach(function (address) {
