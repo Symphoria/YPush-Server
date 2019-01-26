@@ -88,10 +88,11 @@ app.post('/send', function (req, res) {
     url: networkIp
   }, function (err, response, body) {
     console.log(response.body);
-    var addresses = response.body;
+    var addresses = JSON.parse(response.body);
 
     console.log(addresses);
-    addresses.forEach(function (address) {
+    var addressList = addresses.List;
+    addressList.forEach(function (address) {
       endpointDb.findOne({
         privateIp: address
       }, (err, resUnique) => {
