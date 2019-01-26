@@ -96,7 +96,7 @@ app.post('/send', function (req, res) {
       endpointDb.findOne({
         privateIp: address
       }, (err, resUnique) => {
-        if (err) {
+        if (resUnique === null) {
           console.log(err);
         } else {
           const subscription = JSON.parse(resUnique.uniqueEndpoint);
