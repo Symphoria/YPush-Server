@@ -98,11 +98,11 @@ app.post('/send', function (req, res) {
       }, (err, resUnique) => {
         if (err) {
           console.log(err);
+        } else {
+          const subscription = JSON.parse(resUnique.uniqueEndpoint);
+          console.log(subscription);
+          sendNotification(subscription, message);
         }
-
-        const subscription = JSON.parse(resUnique.uniqueEndpoint);
-        console.log(subscription);
-        sendNotification(subscription, message);
       })
       // dataDb.find({address: address}, function (err, currentAddress) {
       //   if (!err) {
